@@ -42,7 +42,7 @@ body
   display: inline-block;
   vertical-align: top;
   width: 48%;
-  height: 500px;
+  height: 600px;
   overflow-y: auto;
   padding: 5px 10px;
   border: 1px solid #42b5fa;
@@ -70,4 +70,12 @@ body
 {
   width: 150px;
   text-align: center;
+}
+
+.tile-preview-img
+{
+  display: inline-block;
+  width: 200px;
+  height: 200px; 
+  border: 1px solid #42b5fa;
 }

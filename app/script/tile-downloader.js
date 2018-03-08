@@ -8,7 +8,7 @@ var app = (function()
   // -------------------------------------------
   // ** Private **
 
-  const OSM_SERVER_URL = "http://tile.openstreetmap.org";
+  let _serverUrl = "http://tile.openstreetmap.org";
 
   const MIN_ZOOM = 0,
         MAX_ZOOM = 19,
@@ -19,15 +19,15 @@ var app = (function()
 
   // -------------------------------------------
   // Log 
-  const logElement = document.getElementById('appLog');
+  const _logElement = document.getElementById('appLog');
   function _clearLog()
   {
-    logElement.innerText = "";    
+    _logElement.innerText = "";    
   }
   function _writeToLog(message, color)
   {
-    logElement.innerHTML += `<div ${ color ? `style="color: ${ color };"` : "" }>${ message }</div>`;
-    logElement.scrollTop = logElement.scrollHeight; // scroll to bottom
+    _logElement.innerHTML += `<div ${ color ? `style="color: ${ color };"` : "" }>${ message }</div>`;
+    _logElement.scrollTop = _logElement.scrollHeight; // scroll to bottom
   }
 
   // -------------------------------------------
@@ -132,7 +132,7 @@ var app = (function()
       {
         for (let y = tilesData.yStart; y <= tilesData.yEnd; y++)
         {
-          let tileUrl = `${ OSM_SERVER_URL }/${ zoom }/${ x }/${ y }.png`;
+          let tileUrl = `${ _serverUrl }/${ zoom }/${ x }/${ y }.png`;
           let fileName = `tile_${ zoom }_${ x }_${ y }.png`;
           _writeToLog(`Download tile [${ ++index }/${ tilesData.tilesCount }] - ${ tileUrl }`);
 
@@ -214,6 +214,11 @@ var app = (function()
   // ** Public **
 
   return {  
+    selectServer: function(server)
+    {
+      _serverUrl = server;
+      document.getElementById('tileExample').src = `${ _serverUrl }/7/63/42.png`      
+    },
     analyze: function()
     {
       _clearLog();
