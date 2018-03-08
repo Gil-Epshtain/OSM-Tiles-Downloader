@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="./app/style/style.css">
+
+  <title>OSM Tiles Downloader</title>
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- * Header * -->
+    <div class="app-header">
+      <h1>Open Stream Map Tiles Downloader</h1>
+      <div class="header-text">
+        Before using this application please read the 
+        <a href="https://wiki.openstreetmap.org/wiki/Tile_usage_policy" target="_blank" class="link">
+          OSM Tile usage policy
+        </a>.
+        <br>
+        Downloading large amount of tiles is <span class="bold">forbidden</span> without prior consultation with a 
+        <a href="https://wiki.openstreetmap.org/wiki/System_Administrators"  target="_blank" class="link"> 
+          OSM System Administrator
+        </a>.
+      </div>
+    </div>
+
+    <!-- * Download Setting * -->
+    <div class="app-box">
+      <!-- Zoom Level -->
+      <div class="setting-section">
+        <label>Zoom Level (0-19):</label>
+        <input id="inputZoom" type="number" min="0" max="19" value="0" />
+      </div>
+      <!-- Bounding Box -->
+      <label>Bounding Box (Lat/Lng):</label>
+      <table class="setting-section table">
+        <!-- North -->
+        <tr>     
+          <td colspan="2" class="table-cell">
+            <div>North:</div>
+            <input id="inputNorth" class="table-textbox" type="number" min="-85.0511" max="85.0511" value="85.0511"/>
+          </td>
+        </tr>
+        <!-- West/ East -->
+        <tr>
+          <td class="table-cell">
+            <div>West:</div>
+            <input id="inputWest" class="table-textbox" type="number" min="-180" max="180" value="-180" />
+          </td>
+          <td class="table-cell">
+            <div>East:</div>
+            <input id="inputEast" class="table-textbox" type="number" min="-180" max="180" value="180" />
+          </td>
+        </tr>
+        <!-- South -->
+        <tr>     
+          <td colspan="2" class="table-cell">
+            <div>South:</div>
+            <input id="inputSouth" class="table-textbox" type="number" min="-85.0511" max="85.0511" value="-85.0511" />
+          </td>
+        </tr>
+      </table>
+      <div class="setting-section">
+        Not sure what is your bounding box? Use 
+        <a href="https://www.openstreetmap.org/export#" target="_blank" class="link">
+          OSM service
+        </a>
+      </div>      
+      <div class="setting-section">
+        <button onclick="app.analyze()">Analyze Tiles Count</button>
+        <button onclick="app.download()">Download Tiles</button>
+      </div>  
+    </div>
+
+    <!-- * Log Window * -->
+    <div id="appLog" class="app-box">
+      Welcome to Tile-Downloader
+    </div>
+  </div>
+ 
+  <script src="./app/script/tile-downloader.js"></script>
+</body>
+</html>

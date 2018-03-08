@@ -1,0 +1,73 @@
+body
+{
+  margin: 0;
+}
+
+.app-container
+{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0px 25px;
+  background-color: #313131;
+  color: #42b5fa;  
+  white-space: nowrap;
+}
+
+.app-header
+{
+  margin-bottom: 25px;
+}
+
+.header-text
+{
+  font-size: 22px;
+}
+
+.link
+{
+  color: #ff0000;
+}
+
+.bold
+{
+  font-weight: bold;
+}
+
+.app-box
+{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 48%;
+  height: 500px;
+  overflow-y: auto;
+  padding: 5px 10px;
+  border: 1px solid #42b5fa;
+  font-size: 20px;
+}
+
+.setting-section
+{
+  margin-bottom: 15px;
+}
+
+.table
+{
+  width: 80%;
+  border: 1px solid #42b5fa;
+}
+
+.table-cell
+{
+  border: 1px solid #42b5fa;
+  text-align: center;
+}
+
+.table-textbox
+{
+  width: 150px;
+  text-align: center;
+}
