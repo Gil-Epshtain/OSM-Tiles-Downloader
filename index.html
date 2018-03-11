@@ -28,89 +28,130 @@
 
     <!-- * Download Setting * -->
     <div class="app-box">
-      <!-- Download Server -->
-      <div class="setting-section">
-        <label>Select Download Server:</label>
-        <select id="inputServer" onchange="app.selectServer(value)">
-          <option value="https://tile.openstreetmap.org" selected>OpenStreetMap [default]</option>
-          <option value="https://a.tile.openstreetmap.org">OpenStreetMap A</option>
-          <option value="https://b.tile.openstreetmap.org">OpenStreetMap B</option>
-          <option value="https://c.tile.openstreetmap.org">OpenStreetMap C</option>
-          <option value="https://maps.wikimedia.org/osm-intl">Wikimedia Maps</option>
-          <option value="http://a.tile.opencyclemap.org/cycle">OpenCycleMap A</option>
-          <option value="http://b.tile.opencyclemap.org/cycle">OpenCycleMap B</option>
-          <option value="http://a.tile.openstreetmap.fr/hot">Humanitarian Map A</option>
-          <option value="http://b.tile.openstreetmap.fr/hot">Humanitarian Map B</option>
-          <option value="http://toolserver.org/tiles/hikebike">Hike & Bike</option>
-          <option value="https://tiles.wmflabs.org/bw-mapnik">OSM B&W</option>
-          <option value="https://a.tiles.wmflabs.org/bw-mapnik">OSM B&W A</option>
-          <option value="https://b.tiles.wmflabs.org/bw-mapnik">OSM B&W B</option>
-          <option value="https://c.tiles.wmflabs.org/bw-mapnik">OSM B&W C</option>
-          <option value="https://tiles.wmflabs.org/osm-no-labels">OSM no labels</option>
-          <option value="https://a.tiles.wmflabs.org/osm-no-labels">OSM no labels A</option>
-          <option value="https://b.tiles.wmflabs.org/osm-no-labels">OSM no labels B</option>
-          <option value="https://c.tiles.wmflabs.org/osm-no-labels">OSM no labels C</option>
-          <option value="http://a.tile.stamen.com/toner">Stamen Toner</option>
-          <option value="http://c.tile.stamen.com/watercolor">Stamen Watercolor</option>
-          <option value="http://a.tile2.opencyclemap.org/transport">Transport Map A</option>
-          <option value="http://b.tile2.opencyclemap.org/transport">Transport Map B</option>
-          <option value="http://a.tile.thunderforest.com/landscape">Thunderforest Landscape A</option>
-          <option value="http://b.tile.thunderforest.com/landscape">Thunderforest Landscape B</option>
-          <option value="http://c.tile.thunderforest.com/landscape">Thunderforest Landscape C</option>
-          <option value="http://a.tile.thunderforest.com/outdoors">Thunderforest Outdoors A</option>
-          <option value="http://b.tile.thunderforest.com/outdoors">Thunderforest Outdoors B</option>
-          <option value="http://c.tile.thunderforest.com/outdoors">Thunderforest Outdoors C</option>
-          <option value="https://cartodb-basemaps-a.global.ssl.fastly.net/dark_all">Dark Matter A</option>
-          <option value="https://cartodb-basemaps-b.global.ssl.fastly.net/dark_all">Dark Matter B</option>
-          <option value="https://cartodb-basemaps-c.global.ssl.fastly.net/dark_all">Dark Matter C</option>
-        </select>
+      <div class="setting-section setting-section-server">
+        <!-- Download Server -->
+        <div>
+          <label>Select Download Server:</label>
+          <select id="inputServer" onchange="app.selectServer(value)">
+            <option value="https://tile.openstreetmap.org" selected>OpenStreetMap [default]</option>
+            <option value="https://a.tile.openstreetmap.org">OpenStreetMap A</option>
+            <option value="https://b.tile.openstreetmap.org">OpenStreetMap B</option>
+            <option value="https://c.tile.openstreetmap.org">OpenStreetMap C</option>
+            <option value="https://maps.wikimedia.org/osm-intl">Wikimedia Maps</option>
+            <option value="http://a.tile.opencyclemap.org/cycle">OpenCycleMap A</option>
+            <option value="http://b.tile.opencyclemap.org/cycle">OpenCycleMap B</option>
+            <option value="http://a.tile.openstreetmap.fr/hot">Humanitarian Map A</option>
+            <option value="http://b.tile.openstreetmap.fr/hot">Humanitarian Map B</option>
+            <option value="http://toolserver.org/tiles/hikebike">Hike & Bike</option>
+            <option value="https://tiles.wmflabs.org/bw-mapnik">OSM B&W</option>
+            <option value="https://a.tiles.wmflabs.org/bw-mapnik">OSM B&W A</option>
+            <option value="https://b.tiles.wmflabs.org/bw-mapnik">OSM B&W B</option>
+            <option value="https://c.tiles.wmflabs.org/bw-mapnik">OSM B&W C</option>
+            <option value="https://tiles.wmflabs.org/osm-no-labels">OSM no labels</option>
+            <option value="https://a.tiles.wmflabs.org/osm-no-labels">OSM no labels A</option>
+            <option value="https://b.tiles.wmflabs.org/osm-no-labels">OSM no labels B</option>
+            <option value="https://c.tiles.wmflabs.org/osm-no-labels">OSM no labels C</option>
+            <option value="http://a.tile.stamen.com/toner">Stamen Toner</option>
+            <option value="http://c.tile.stamen.com/watercolor">Stamen Watercolor</option>
+            <option value="http://a.tile2.opencyclemap.org/transport">Transport Map A</option>
+            <option value="http://b.tile2.opencyclemap.org/transport">Transport Map B</option>
+            <option value="http://a.tile.thunderforest.com/landscape">Thunderforest Landscape A</option>
+            <option value="http://b.tile.thunderforest.com/landscape">Thunderforest Landscape B</option>
+            <option value="http://c.tile.thunderforest.com/landscape">Thunderforest Landscape C</option>
+            <option value="http://a.tile.thunderforest.com/outdoors">Thunderforest Outdoors A</option>
+            <option value="http://b.tile.thunderforest.com/outdoors">Thunderforest Outdoors B</option>
+            <option value="http://c.tile.thunderforest.com/outdoors">Thunderforest Outdoors C</option>
+            <option value="https://cartodb-basemaps-a.global.ssl.fastly.net/dark_all">Dark Matter A</option>
+            <option value="https://cartodb-basemaps-b.global.ssl.fastly.net/dark_all">Dark Matter B</option>
+            <option value="https://cartodb-basemaps-c.global.ssl.fastly.net/dark_all">Dark Matter C</option>
+          </select>
+        </div>
+        <!-- Preview Tile -->
+        <div class="tile-preview">
+          <img id="tilePreview" class="tile-preview-img" title="preview tile" src="https://tile.openstreetmap.org/7/63/42.png"/>
+        </div>
       </div>
-      <!-- Preview Tile -->
-      <div class="setting-section">
-        <img id="tileExample" class="tile-preview-img" title="preview tile" src="https://tile.openstreetmap.org/7/63/42.png"/>
-      </div>
+
       <!-- Zoom Level -->
       <div class="setting-section">
         <label>Zoom Level (0-19):</label>
         <input id="inputZoom" type="number" min="0" max="19" value="0" />
       </div>
+
       <!-- Bounding Box -->
-      <label>Bounding Box (Lat/Lng):</label>
-      <table class="setting-section table">
-        <!-- North -->
-        <tr>     
-          <td colspan="2" class="table-cell">
-            <div>North:</div>
-            <input id="inputNorth" class="table-textbox" type="number" min="-85.0511" max="85.0511" value="85.0511"/>
-          </td>
-        </tr>
-        <!-- West/ East -->
-        <tr>
-          <td class="table-cell">
-            <div>West:</div>
-            <input id="inputWest" class="table-textbox" type="number" min="-180" max="180" value="-180" />
-          </td>
-          <td class="table-cell">
-            <div>East:</div>
-            <input id="inputEast" class="table-textbox" type="number" min="-180" max="180" value="180" />
-          </td>
-        </tr>
-        <!-- South -->
-        <tr>     
-          <td colspan="2" class="table-cell">
-            <div>South:</div>
-            <input id="inputSouth" class="table-textbox" type="number" min="-85.0511" max="85.0511" value="-85.0511" />
-          </td>
-        </tr>
-      </table>
       <div class="setting-section">
-        Not sure what is your bounding box? Use 
-        <a href="https://www.openstreetmap.org/export#" target="_blank" class="link">
-          OSM service
-        </a>
+        <input type="radio" name="downloadType" value="latlng" checked onclick="app.setDownloadType(this.value)" />
+        <label>Bounding Box (Lat/Lng):</label>
+        <table class="table">
+          <!-- North -->
+          <tr>     
+            <td colspan="2" class="table-cell">
+              <div>North:</div>
+              <input id="inputNorth" class="table-textbox" type="number" min="-85.0511" max="85.0511" value="85.0511"/>
+            </td>
+          </tr>
+          <!-- West/ East -->
+          <tr>
+            <td class="table-cell">
+              <div>West:</div>
+              <input id="inputWest" class="table-textbox" type="number" min="-180" max="180" value="-180" />
+            </td>
+            <td class="table-cell">
+              <div>East:</div>
+              <input id="inputEast" class="table-textbox" type="number" min="-180" max="180" value="180" />
+            </td>
+          </tr>
+          <!-- South -->
+          <tr>     
+            <td colspan="2" class="table-cell">
+              <div>South:</div>
+              <input id="inputSouth" class="table-textbox" type="number" min="-85.0511" max="85.0511" value="-85.0511" />
+            </td>
+          </tr>
+        </table>
+        <div>
+          Not sure what is your bounding box? Use 
+          <a href="https://www.openstreetmap.org/export#" target="_blank" class="link">
+            OSM service
+          </a>
+        </div>
       </div>
-      <!-- Buttons -->
+
+      <!-- X/Y Range -->
       <div class="setting-section">
+        <input type="radio" name="downloadType" value="xy" onclick="app.setDownloadType(this.value)" />
+        <label>X/Y (Tiles range):</label>
+        <table class="table">
+          <!-- Y Start -->
+          <tr>     
+            <td colspan="2" class="table-cell">
+              <div>Y Start:</div>
+              <input id="yStart" class="table-textbox" type="number" min="0" value="0" disabled />
+            </td>
+          </tr>
+          <!-- X Start/ X Start -->
+          <tr>
+            <td class="table-cell">
+              <div>X Start:</div>
+              <input id="xStart" class="table-textbox" type="number" min="0" value="0" disabled />
+            </td>
+            <td class="table-cell">
+              <div>X End:</div>
+              <input id="xEnd" class="table-textbox" type="number" min="0" value="0" disabled />
+            </td>
+          </tr>
+          <!-- Y End -->
+          <tr>     
+            <td colspan="2" class="table-cell">
+              <div>Y End:</div>
+              <input id="yEnd" class="table-textbox" type="number" min="0" value="0" disabled />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Buttons -->
+      <div class="setting-section setting-section-buttons">
         <button onclick="app.analyze()">Analyze Tiles Count</button>
         <button onclick="app.download()">Download Tiles</button>
       </div>

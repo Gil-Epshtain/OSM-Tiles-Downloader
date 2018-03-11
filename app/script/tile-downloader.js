@@ -9,6 +9,7 @@ var app = (function()
   // ** Private **
 
   let _serverUrl = "http://tile.openstreetmap.org";
+  let _downloadType = "latlng";
 
   const MIN_ZOOM = 0,
         MAX_ZOOM = 19,
@@ -32,21 +33,66 @@ var app = (function()
 
   // -------------------------------------------
   // Input
+  const tilePreviewElement  = document.getElementById('tilePreview'),
+        inputZoomElement    = document.getElementById('inputZoom'),
+        inputNorthElement   = document.getElementById('inputNorth'),
+        inputWestElement    = document.getElementById('inputWest'),
+        inputEastElement    = document.getElementById('inputEast'),
+        inputSouthElement   = document.getElementById('inputSouth'),
+        inputXStartElement  = document.getElementById('xStart'),
+        inputXEndElement    = document.getElementById('xEnd'),
+        inputYStartElement  = document.getElementById('yStart'),
+        inputYEndElement    = document.getElementById('yEnd');
+        
   function _readInput()
   {
+    let inputData, isInputValid;
+    if (_downloadType === "latlng")
+    {
+      inputData = _readInputLatLng();
+      isInputValid = _validateInputLatLng(inputData);
+    }
+    else if (_downloadType === "xy")
+    {
+      inputData = _readInputXY();
+      isInputValid = _validateInputXY(inputData);
+    }
+
+    return isInputValid ? inputData : null;
+  }
+
+  function _readInputLatLng()
+  {
     return {
-      zoom: parseFloat(document.getElementById("inputZoom").value),
+      zoom: parseFloat(inputZoomElement.value),
       boundingBox:
       {
-        north: parseFloat(document.getElementById("inputNorth").value),
-        west:  parseFloat(document.getElementById("inputWest").value),
-        east:  parseFloat(document.getElementById("inputEast").value),
-        south: parseFloat(document.getElementById("inputSouth").value)
+        north: parseFloat(inputNorthElement.value),
+        west:  parseFloat(inputWestElement.value),
+        east:  parseFloat(inputEastElement.value),
+        south: parseFloat(inputSouthElement.value)
       }
     };
   }
 
-  function _validateInput(inputData)
+  function _readInputXY()
+  {
+    return {
+      zoom: parseFloat(inputZoomElement.value),
+      X:
+      {        
+        start:  parseFloat(inputXStartElement.value),
+        end:    parseFloat(inputXEndElement.value)
+      },
+      Y:
+      {        
+        start:  parseFloat(inputYStartElement.value),
+        end:    parseFloat(inputYEndElement.value)
+      }
+    };
+  }
+
+  function _validateInputLatLng(inputData)
   {
     let isInputValid = true;
 
@@ -64,8 +110,10 @@ var app = (function()
     {
       _writeToLog("Input is illegal:", "red");
       _writeToLog((inputData.zoom < MIN_ZOOM || MAX_ZOOM < inputData.zoom ? `Zoom Level value need to be in the range [${ MIN_ZOOM }-${ MAX_ZOOM }].` : ""), "red");
+      
       _writeToLog((inputData.boundingBox.north <= inputData.boundingBox.south ? "North value need to be bigger than South value." : ""), "red");
       _writeToLog((inputData.boundingBox.east  <= inputData.boundingBox.west  ? "East value need to be bigger than West value." : ""), "red");
+      
       _writeToLog((inputData.boundingBox.north < MIN_LAT || MAX_LAT < inputData.boundingBox.north ? `North value need to be in the range [${ MIN_LAT }-${ MAX_LAT }].` : ""), "red");
       _writeToLog((inputData.boundingBox.south < MIN_LAT || MAX_LAT < inputData.boundingBox.south ? `South value need to be in the range [${ MIN_LAT }-${ MAX_LAT }].` : ""), "red");
       _writeToLog((inputData.boundingBox.west  < MIN_LNG || MAX_LNG < inputData.boundingBox.west  ? `West value need to be in the range [${ MIN_LNG }-${ MAX_LNG }].`  : ""), "red");
@@ -77,7 +125,43 @@ var app = (function()
     return isInputValid;
   }
 
+  function _validateInputXY(inputData)
+  {
+    let isInputValid = true;
+
+    let max = Math.pow(2, inputData.zoom) - 1;
+
+    if (MIN_ZOOM <= inputData.zoom && inputData.zoom < MAX_ZOOM &&
+        0 <= inputData.X.start && inputData.X.start <= max &&
+        0 <= inputData.X.end   && inputData.X.end   <= max &&
+        0 <= inputData.Y.start && inputData.Y.start <= max &&
+        0 <= inputData.Y.end   && inputData.Y.end   <= max &&
+        inputData.X.start <= inputData.X.end && 
+        inputData.Y.start <= inputData.Y.end)
+    {
+      isInputValid = true;
+    }
+    else
+    {
+      _writeToLog("Input is illegal:", "red");
+      _writeToLog((inputData.zoom < MIN_ZOOM || MAX_ZOOM < inputData.zoom ? `Zoom Level value need to be in the range [${ MIN_ZOOM }-${ MAX_ZOOM }].` : ""), "red");      
+      
+      _writeToLog((inputData.X.end < inputData.X.start ? "X-End value need to be bigger/equal than X-Start value." : ""), "red");
+      _writeToLog((inputData.Y.end < inputData.Y.start ? "Y-End value need to be bigger/equal than Y-Start value." : ""), "red");
+      
+      _writeToLog((inputData.X.start < 0 || max < inputData.X.start ? `X-Start value need to be in the range [0-${ max }].` : ""), "red");
+      _writeToLog((inputData.X.end   < 0 || max < inputData.X.end   ? `X-End value need to be in the range [0-${ max }].`   : ""), "red");
+      _writeToLog((inputData.Y.start < 0 || max < inputData.Y.start ? `Y-Start value need to be in the range [0-${ max }].` : ""), "red");
+      _writeToLog((inputData.Y.end   < 0 || max < inputData.Y.end   ? `Y-End value need to be in the range [0-${ max }].`   : ""), "red");
+
+      isInputValid = false;
+    }
+
+    return isInputValid;
+  }
+
   // -------------------------------------------
+  // Utils
   function _getTimeString(time)
   {
     let ms = time % 1000;
@@ -98,15 +182,29 @@ var app = (function()
 
   // -------------------------------------------
   // Download Tiles 
-  function _analyzeTiles(zoom, boundingBox)
+  function _analyzeTiles(inputData)
   {
-    let tilesData =
+    let tilesData;
+    if (_downloadType === "latlng")
     {
-      xStart: _lng2tile(boundingBox.west,  zoom),
-      xEnd  : _lng2tile(boundingBox.east,  zoom),
-      yStart: _lat2tile(boundingBox.north, zoom),
-      yEnd  : _lat2tile(boundingBox.south, zoom)
-    };
+      tilesData =
+      {
+        xStart: _lng2tile(inputData.boundingBox.west,  inputData.zoom),
+        xEnd  : _lng2tile(inputData.boundingBox.east,  inputData.zoom),
+        yStart: _lat2tile(inputData.boundingBox.north, inputData.zoom),
+        yEnd  : _lat2tile(inputData.boundingBox.south, inputData.zoom)
+      }; 
+    }
+    else if (_downloadType === "xy")
+    {
+      tilesData =
+      {
+        xStart: inputData.X.start,
+        xEnd  : inputData.X.end,
+        yStart: inputData.Y.start,
+        yEnd  : inputData.Y.end
+      };
+    }    
 
     let xCount = Math.abs(tilesData.xEnd - tilesData.xStart) + 1,
         yCount = Math.abs(tilesData.yEnd - tilesData.yStart) + 1;
@@ -118,9 +216,9 @@ var app = (function()
     return tilesData;
   }
 
-  async function _downloadTiles(zoom, boundingBox)
+  async function _downloadTiles(inputData)
   {
-    const tilesData = _analyzeTiles(zoom, boundingBox);
+    const tilesData = _analyzeTiles(inputData);
 
     if(confirm(`You are about to download ${ tilesData.tilesCount } Tiles, are you sure?`))
     {
@@ -132,8 +230,8 @@ var app = (function()
       {
         for (let y = tilesData.yStart; y <= tilesData.yEnd; y++)
         {
-          let tileUrl = `${ _serverUrl }/${ zoom }/${ x }/${ y }.png`;
-          let fileName = `tile_${ zoom }_${ x }_${ y }.png`;
+          let tileUrl = `${ _serverUrl }/${ inputData.zoom }/${ x }/${ y }.png`;
+          let fileName = `tile_${ inputData.zoom }_${ x }_${ y }.png`;
           _writeToLog(`Download tile [${ ++index }/${ tilesData.tilesCount }] - ${ tileUrl }`);
 
           try
@@ -212,12 +310,40 @@ var app = (function()
 
   // -------------------------------------------
   // ** Public **
-
-  return {  
+  return {
     selectServer: function(server)
     {
       _serverUrl = server;
-      document.getElementById('tileExample').src = `${ _serverUrl }/7/63/42.png`      
+      tilePreviewElement.src = `${ _serverUrl }/7/63/42.png`      
+    },
+    setDownloadType: function(type)
+    {
+      _downloadType = type;
+
+      if (type === 'latlng')
+      {
+        inputNorthElement.disabled  = false;
+        inputEastElement.disabled   = false;
+        inputWestElement.disabled   = false;
+        inputSouthElement.disabled  = false;
+
+        inputXStartElement.disabled = true;
+        inputXEndElement.disabled   = true;
+        inputYStartElement.disabled = true;
+        inputYEndElement.disabled   = true;
+      }
+      else if (type === 'xy')
+      {
+        inputNorthElement.disabled  = true;
+        inputEastElement.disabled   = true;
+        inputWestElement.disabled   = true;
+        inputSouthElement.disabled  = true;
+
+        inputXStartElement.disabled = false;
+        inputXEndElement.disabled   = false;
+        inputYStartElement.disabled = false;
+        inputYEndElement.disabled   = false;
+      }
     },
     analyze: function()
     {
@@ -225,10 +351,9 @@ var app = (function()
       _writeToLog("Tiles analysis:");
 
       let inputData = _readInput();
-      let isInputValid = _validateInput(inputData);  
-      if (isInputValid)
+      if (inputData)
       {
-        _analyzeTiles(inputData.zoom, inputData.boundingBox);
+        _analyzeTiles(inputData);
       }
       else
       {
@@ -241,10 +366,9 @@ var app = (function()
       _writeToLog("Starting download flow...");
 
       let inputData = _readInput();
-      let isInputValid = _validateInput(inputData);  
-      if (isInputValid)
+      if (inputData)
       {
-        _downloadTiles(inputData.zoom, inputData.boundingBox);
+        _downloadTiles(inputData);
       }
       else
       {

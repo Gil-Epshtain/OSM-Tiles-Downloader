@@ -1,6 +1,9 @@
+/* ******************************************************* */
+/* Main App Page */
 body
 {
   margin: 0;
+  direction: ltr;
 }
 
 .app-container
@@ -16,9 +19,11 @@ body
   white-space: nowrap;
 }
 
+/* ******************************************************* */
+/* Header */
 .app-header
 {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .header-text
@@ -26,6 +31,23 @@ body
   font-size: 22px;
 }
 
+/* ******************************************************* */
+/* App Box (left/right container) */
+.app-box
+{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 48%;
+  height: 80vh;
+  overflow-y: auto;
+  padding: 5px 10px;
+  border: 1px solid #42b5fa;
+  font-size: 20px;
+}
+
+/* ******************************************************* */
+/* Generic */
 .link
 {
   color: #ff0000;
@@ -36,40 +58,22 @@ body
   font-weight: bold;
 }
 
-.app-box
-{
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  width: 48%;
-  height: 600px;
-  overflow-y: auto;
-  padding: 5px 10px;
-  border: 1px solid #42b5fa;
-  font-size: 20px;
-}
-
 .setting-section
-{
-  margin-bottom: 15px;
-}
-
-.table
-{
-  width: 80%;
+{  
+  position: relative;
+  min-width: 615px;
   border: 1px solid #42b5fa;
+  margin: 5px 0;
+  padding: 5px 10px;
 }
 
-.table-cell
+/* ******************************************************* */
+/* Left Section */
+.tile-preview
 {
-  border: 1px solid #42b5fa;
-  text-align: center;
-}
-
-.table-textbox
-{
-  width: 150px;
-  text-align: center;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 .tile-preview-img
@@ -79,3 +83,34 @@ body
   height: 200px; 
   border: 1px solid #42b5fa;
 }
+
+.table
+{
+  width: 100%;
+  border: 1px solid #42b5fa;
+}
+
+.table-cell
+{
+  border: 1px solid #42b5fa;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.table-textbox
+{
+  width: 150px;
+  text-align: center;
+}
+
+.setting-section-server
+{
+  height: 203px;
+}
+
+.setting-section-buttons
+{
+  text-align: right;
+}
+
+/* ******************************************************* */
