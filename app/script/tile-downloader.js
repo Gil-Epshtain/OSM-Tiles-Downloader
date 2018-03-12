@@ -11,6 +11,8 @@ var app = (function()
   let _serverUrl = "http://tile.openstreetmap.org";
   let _downloadType = "latlng";
 
+  let _isAbortDownload;
+
   const MIN_ZOOM = 0,
         MAX_ZOOM = 19,
         MIN_LAT = -85.0511,
@@ -222,6 +224,8 @@ var app = (function()
 
     if(confirm(`You are about to download ${ tilesData.tilesCount } Tiles, are you sure?`))
     {
+      _isAbortDownload = false;
+
       let index = 0;
       let errorCount = 0;
       let startTime = new Date().getTime();
@@ -230,19 +234,27 @@ var app = (function()
       {
         for (let y = tilesData.yStart; y <= tilesData.yEnd; y++)
         {
-          let tileUrl = `${ _serverUrl }/${ inputData.zoom }/${ x }/${ y }.png`;
-          let fileName = `tile_${ inputData.zoom }_${ x }_${ y }.png`;
-          _writeToLog(`Download tile [${ ++index }/${ tilesData.tilesCount }] - ${ tileUrl }`);
+          if (!_isAbortDownload)
+          {
+            let tileUrl = `${ _serverUrl }/${ inputData.zoom }/${ x }/${ y }.png`;
+            let fileName = `tile_${ inputData.zoom }_${ x }_${ y }.png`;
+            _writeToLog(`Download tile [${ ++index }/${ tilesData.tilesCount }] - ${ tileUrl }`);
 
-          try
-          {
-            let result = await _downloadFile(tileUrl, fileName);
-            _writeToLog(result, "lime");
+            try
+            {
+              let result = await _downloadFile(tileUrl, fileName);
+              _writeToLog(result, "lime");
+            }
+            catch(e)
+            {
+              _writeToLog(e, "red");
+              errorCount++;
+            }
           }
-          catch(e)
+          else
           {
-            _writeToLog(e, "red");
-            errorCount++;
+            _writeToLog(`Download was aborted by the user [download only ${ index } out of ${ tilesData.tilesCount } items].`, "yellow");
+            return;
           }
         }
       }
@@ -374,6 +386,10 @@ var app = (function()
       {
         _writeToLog("Download flow canceled, due to illegal Input!");
       }
+    },
+    abortDownload: function()
+    {
+      _isAbortDownload = true;
     }
   };
 
