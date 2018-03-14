@@ -21,9 +21,9 @@ body
 
 /* ******************************************************* */
 /* Header */
-.app-header
+.header-title
 {
-  margin-bottom: 15px;
+  margin: 10px 0;  
 }
 
 .header-text
@@ -35,15 +35,26 @@ body
 /* App Box (left/right container) */
 .app-box
 {
-  position: relative;
+  position: absolute;
   display: inline-block;
-  vertical-align: top;
-  width: 48%;
-  height: 80vh;
+  width: calc(50% - 45px);
+  top: 120px;
+  bottom: 10px;
+  padding: 5px 5px;
+  border: 3px solid #42b5fa;
+  vertical-align: top;  
   overflow-y: auto;
-  padding: 5px 10px;
-  border: 1px solid #42b5fa;
   font-size: 20px;
+}
+
+.box-left
+{
+  left: 25px;
+}
+
+.box-right
+{
+  right: 25px;
 }
 
 /* ******************************************************* */
@@ -62,9 +73,9 @@ body
 {  
   position: relative;
   min-width: 615px;
-  border: 1px solid #42b5fa;
-  margin: 5px 0;
-  padding: 5px 10px;
+  border: 3px solid #42b5fa;
+  margin-bottom: 5px;
+  padding: 5px 5px;
 }
 
 /* ******************************************************* */
@@ -72,27 +83,28 @@ body
 .tile-preview
 {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 4px;
+  right: 4px;
 }
 
 .tile-preview-img
 {
   display: inline-block;
-  width: 200px;
-  height: 200px; 
+  width: 170px;
+  height: 170px; 
   border: 1px solid #42b5fa;
 }
 
 .table
 {
   width: 100%;
-  border: 1px solid #42b5fa;
+  border-collapse: collapse;
+  border: 3px solid #42b5fa;
 }
 
 .table-cell
 {
-  border: 1px solid #42b5fa;
+  border: 3px solid #42b5fa;
   text-align: center;
   padding-bottom: 5px;
 }
@@ -103,14 +115,20 @@ body
   text-align: center;
 }
 
+.bounding-box-text
+{
+  padding-top: 5px;
+}
+
 .setting-section-server
 {
-  height: 203px;
+  height: 170px;
 }
 
 .setting-section-buttons
 {
   text-align: right;
+  margin-bottom: 0;
 }
 
 /* ******************************************************* */
