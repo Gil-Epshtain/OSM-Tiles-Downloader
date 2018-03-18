@@ -7,18 +7,21 @@ Downloading large amount of tiles is **forbidden** without prior consultation wi
 
 **Use this application in your own risk. I *Gil Epshtain*, will not be responsible to any damage to your system. And I will not be reliable if you violate the OSM tile policy or any other Tile usage policy!**
 
-### Application usage
-1. Download dependences
-`
+### Installation
+
+OSM-Tiles-Downloader requires [Node.js](https://nodejs.org/) to run.
+
+ Download and install the dependencies.
+```sh
 $ npm install
-`
+```
 
-2. Run dev server
-`
+Run dev server
+```sh
 $ ng serve
-`
+```
 
-3. ]Open your web browser and navigate to [http://localhost:4200/][devServer]
+Open your web browser and navigate to `http://localhost:4200/`
 
 ### License
 MIT
@@ -27,4 +30,4 @@ MIT
 
   [lnk1]: <https://wiki.openstreetmap.org/wiki/Tile_usage_policy>
   [lnk2]: <https://wiki.openstreetmap.org/wiki/System_Administrators>
-  [devServer]: <http://localhost:4200/>
+  
