@@ -7,6 +7,8 @@ Downloading large amount of tiles is **forbidden** without prior consultation wi
 
 **Use this application in your own risk. I *Gil Epshtain*, will not be responsible to any damage to your system. And I will not be reliable if you violate the OSM tile policy or any other Tile usage policy!**
 
+![preview](https://raw.githubusercontent.com/Gil-Epshtain/OSM-Tiles-Downloader/master/snapshot.png)
+
 ### Installation
 
 OSM-Tiles-Downloader requires [Node.js](https://nodejs.org/) to run.
