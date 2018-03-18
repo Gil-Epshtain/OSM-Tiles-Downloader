@@ -1,0 +1,17 @@
+@import './../../style/colors.scss';
+
+.app-map-preview
+{
+  position: absolute;
+  width: calc(100% - 350px);
+  height: 200px;
+  top: 5px;
+  right: 5px;
+  border: 1px solid $color-text;
+
+  .map-container
+  {
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,0 +1,40 @@
+@import './../../../style/colors.scss';
+
+.tiles-downloader-config-container
+{
+  .setting-section
+  {
+    position: relative;
+    border: 3px solid $color-text;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+  }  
+  .setting-section-server
+  {
+    height: 202px;
+  }
+  .setting-section-buttons
+  {
+    text-align: right;
+    margin-bottom: 0;
+  }
+  
+  .form-field
+  {
+    width: 300px;
+    margin-bottom: -1em;
+  }
+
+  .table
+  {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
+  }
+  .table-cell
+  {
+    border: 3px solid $color-text;
+    text-align: center;
+    padding-top: 5px;
+  }
+}

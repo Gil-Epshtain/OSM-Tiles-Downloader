@@ -1,0 +1,27 @@
+@import './../../style/colors.scss';
+
+.application-container
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 25px;
+  background-color: $color-background;
+  color: $color-text;
+
+  .header-container
+  {
+  }
+
+  .body-container
+  {
+    white-space: nowrap;
+
+    .tiles-downloader
+    {
+      width: 100%;
+    }
+  }
+}

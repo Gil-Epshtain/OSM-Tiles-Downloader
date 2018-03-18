@@ -1,0 +1,11 @@
+<!-- *** Tiles-Downloader *** -->
+<div class="tiles-downloader-container">
+  <app-tiles-downloader-config class="downloader-section section-left"
+                               (onAnalyze)="_onAnalyze($event)"
+                               (onDownload)="_onDownload($event)"
+                               (onAbort)="_onAbort($event)">
+  </app-tiles-downloader-config>
+
+  <app-tiles-downloader-log class="downloader-section section-right">
+  </app-tiles-downloader-log>
+</div>
