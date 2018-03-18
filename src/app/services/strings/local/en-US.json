@@ -3,7 +3,7 @@
 
     "_OsmTilesDownloader_":     "OSM Tiles Downloader",
     
-    "_HeaderTitle_":            "Open Stream Map Tiles Downloader",
+    "_HeaderTitle_":            "Open Street Map Tiles Downloader",
     "_HeaderText_1_":           "Before using this application please read the ",
     "_HeaderTextLink_1_":       "OSM Tile usage policy",
     "_HeaderText_2a_":          "Downloading large amount of tiles is ",
