@@ -18,7 +18,7 @@ import {
 
 // *** Application ***
 // Modules 
-import { AppRoutingModule }               from './app-routing.module';
+//import { AppRoutingModule }               from './app-routing.module';
 
 // Services
 import { StringsService }                 from './services/strings/strings.service';
@@ -55,7 +55,7 @@ import { MapPreviewComponent }            from './components/map-preview/map-pre
     MatTooltipModule,
 
     // Application
-    AppRoutingModule,
+    //AppRoutingModule,
   ],
   // Services
   providers: 

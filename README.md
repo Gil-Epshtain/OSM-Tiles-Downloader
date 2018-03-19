@@ -9,7 +9,12 @@ Downloading large amount of tiles is **forbidden** without prior consultation wi
 
 ![preview](https://raw.githubusercontent.com/Gil-Epshtain/OSM-Tiles-Downloader/master/snapshot.png)
 
-### Installation
+### Run application
+You only wont to use the application, and you don't care about debugging the application.
+Then you should only download the `dist` folder to your machine, and open the `dist/index.html` in your browser.
+
+### Development
+You wont to be part of the development. You wont to debug and understand how things work under the hood, then you will need to follow these steps.
 
 OSM-Tiles-Downloader requires [Node.js](https://nodejs.org/) to run.
 
