@@ -32,8 +32,7 @@ import { MainComponent }                  from './components/main/main.component
 import { HeaderComponent }                from './components/header/header.component';
 
 import { TilesDownloaderComponent }       from './components/tiles-downloader/tiles-downloader.component';
-import { TilesDownloaderConfigComponent } from './components/tiles-downloader/tiles-downloader-config/tiles-downloader-config.component';
-import { TilesDownloaderLogComponent }    from './components/tiles-downloader/tiles-downloader-log/tiles-downloader-log.component';
+import { MessagesBoardComponent }         from './components/messages-board/messages-board.component';
 import { MapPreviewComponent }            from './components/map-preview/map-preview.component';
 
 @NgModule({
@@ -74,8 +73,7 @@ import { MapPreviewComponent }            from './components/map-preview/map-pre
     MainComponent,
     HeaderComponent,
     TilesDownloaderComponent,
-    TilesDownloaderConfigComponent,
-    TilesDownloaderLogComponent,
+    MessagesBoardComponent,
     MapPreviewComponent,
     // fin
   ],

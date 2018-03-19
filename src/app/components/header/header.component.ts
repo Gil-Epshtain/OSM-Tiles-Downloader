@@ -11,7 +11,7 @@ import { StringsService } from './../../services/strings/strings.service';
 })
 export class HeaderComponent implements OnInit
 {
-  private _strings: any;
+  public strings: any;
 
   public constructor(private _stringsService: StringsService) 
   {
@@ -20,6 +20,6 @@ export class HeaderComponent implements OnInit
 
   public ngOnInit() 
   {
-    this._strings = this._stringsService.strings;
+    this.strings = this._stringsService.strings;
   }
 }

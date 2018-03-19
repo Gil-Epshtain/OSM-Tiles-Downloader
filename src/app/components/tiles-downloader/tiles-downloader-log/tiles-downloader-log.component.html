@@ -1,9 +1,0 @@
-<!-- *** Tiles-Downloader-Log *** -->
-<div #logBoard class="tiles-downloader-log-container">
-
-  <div class="log-message" 
-      *ngFor='let message of _logService.messages'
-      [ngStyle]="{ 'color': _getMessageColor(message.logLevel) }">
-    {{ message.text }}
-  </div>
-</div>

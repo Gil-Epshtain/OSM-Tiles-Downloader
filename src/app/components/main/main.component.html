@@ -6,8 +6,13 @@
     <app-header></app-header>
   </div>
 
-  <!-- Body -->
   <div class="body-container">
-    <app-tiles-downloader class="tiles-downloader"></app-tiles-downloader>
+    <!-- Left: Download-Setting -->
+    <app-tiles-downloader class="page-section section-left">
+    </app-tiles-downloader>
+
+    <!-- Right: Download-Log -->
+    <app-messages-board class="page-section section-right">
+    </app-messages-board>    
   </div>
 </div>

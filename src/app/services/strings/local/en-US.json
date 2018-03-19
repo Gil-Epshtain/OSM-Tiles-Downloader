@@ -42,13 +42,14 @@
     "_Errors_":                 "errors",
     "_DownloadAbortedByUser_":  "Download was aborted by the user.",
 
-    "_IllegalInput_":           "Input is illegal:",
+    "_IllegalInput_":           "Input is illegal",
     "_ValueNeedToBeInRange_":   "value need to be in the range",
     "_ValueNeedToBeBigger_":    "value need to be bigger than",
     "_ValueNeedToBeEqual_":     "value need to be bigger/equal than",
     "_Value_":                  "value",
     "_CanceledIllegalInput_":   "canceled, due to illegal Input!",
     "_TileAnalysis_":           "Tiles Analysis",
+     
     "_DownloadFlow_":           "Download Flow",
 
     "_TilesCount_":             "Tiles count",

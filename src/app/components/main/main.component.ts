@@ -15,6 +15,5 @@ export class MainComponent implements OnInit
 
   public ngOnInit() 
   {
-
   }
 }

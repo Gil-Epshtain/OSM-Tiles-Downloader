@@ -1,11 +1,125 @@
 <!-- *** Tiles-Downloader *** -->
 <div class="tiles-downloader-container">
-  <app-tiles-downloader-config class="downloader-section section-left"
-                               (onAnalyze)="_onAnalyze($event)"
-                               (onDownload)="_onDownload($event)"
-                               (onAbort)="_onAbort($event)">
-  </app-tiles-downloader-config>
+  <form>
 
-  <app-tiles-downloader-log class="downloader-section section-right">
-  </app-tiles-downloader-log>
+    <!-- Download Server -->
+    <div class="form-section form-section-server">
+      <mat-form-field class="form-field">
+        <mat-select placeholder="{{ strings._SelectServer_ }}" [(value)]="selectedServer">
+          <mat-option *ngFor="let server of serversList" [value]="server">
+            {{ server.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <!-- Map Preview -->
+      <app-map-preview [mapServer]="selectedServer.url"></app-map-preview>
+    </div>
+
+    <!-- Zoom Level -->
+    <div class="form-section">
+      <mat-form-field class="form-field">
+        <input type="number" matInput placeholder="{{ strings._ZoomLevel_ }}" min="_MIN_ZOOM" max="_MAX_ZOOM" name="zoomLevel" [(ngModel)]="zoomLevel"/>
+      </mat-form-field>
+    </div>
+    
+    <!-- * Bounding Box * -->
+    <div class="form-section">
+      <mat-radio-group [(ngModel)]="downloadType" name="downloadType">
+        <mat-radio-button color="primary" value="latlng">
+          {{ strings._BoundingBox_ }}:
+        </mat-radio-button>
+      </mat-radio-group>
+      <table class="table">
+        <!-- North -->
+        <tr>     
+          <td colspan="2" class="table-cell">
+            <mat-form-field class="form-field">
+              <input type="number" matInput placeholder="{{ strings._North_ }}" min="_MIN_LAT" max="_MAX_LAT" name="north" [(ngModel)]="north"/>
+            </mat-form-field>
+          </td>
+        </tr>
+        <!-- West/ East -->
+        <tr>
+          <td class="table-cell">
+            <mat-form-field class="form-field">
+              <input type="number" matInput placeholder="{{ strings._West_ }}" min="_MIN_LNG" max="_MAX_LNG" name="west" [(ngModel)]="west"/>
+            </mat-form-field>
+          </td>
+          <td class="table-cell">
+            <mat-form-field class="form-field">
+              <input type="number" matInput placeholder="{{ strings._East_ }}" min="_MIN_LNG" max="_MAX_LNG" name="east" [(ngModel)]="east"/>
+            </mat-form-field>
+          </td>
+        </tr>
+        <!-- South -->
+        <tr>     
+          <td colspan="2" class="table-cell">
+            <mat-form-field class="form-field">
+              <input type="number" matInput placeholder="{{ strings._South_ }}" min="_MIN_LAT" max="_MAX_LAT" name="south" [(ngModel)]="south"/>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <div>
+        {{ strings._BoundingBoxText_ }}
+        <a href="https://www.openstreetmap.org/export#" target="_blank" class="link">
+          {{ strings._BoundingBoxLink_ }}</a>.
+      </div>
+    </div>
+
+    <!-- * X/Y Range * -->
+    <div class="form-section">
+      <mat-radio-group [(ngModel)]="downloadType" name="downloadType">
+        <mat-radio-button color="primary" value="xy">
+          {{ strings._XYTilesRange_ }}:
+        </mat-radio-button>
+      </mat-radio-group>
+      <table class="table">
+        <!-- Y Start -->
+        <tr>     
+          <td colspan="2" class="table-cell">
+            <mat-form-field class="form-field">
+              <input type="number" matInput placeholder="{{ strings._YStart_ }}" min="0" name="yStart" [(ngModel)]="yStart"/>
+            </mat-form-field>
+          </td>
+        </tr>
+        <!-- X Start/ X Start -->
+        <tr>
+          <td class="table-cell">
+            <mat-form-field class="form-field">
+              <input type="number" matInput placeholder="{{ strings._XStart_ }}" min="0" name="xStart" [(ngModel)]="xStart"/>
+            </mat-form-field>
+          </td>
+          <td class="table-cell">
+            <mat-form-field class="form-field">
+              <input type="number" matInput placeholder="{{ strings._XEnd_ }}" min="0" name="xEnd" [(ngModel)]="xEnd"/>
+            </mat-form-field>
+          </td>
+        </tr>
+        <!-- Y End -->
+        <tr>     
+          <td colspan="2" class="table-cell">
+            <mat-form-field class="form-field">
+              <input type="number" matInput placeholder="{{ strings._YEnd_ }}" min="0" name="yEnd" [(ngModel)]="yEnd"/>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- * Buttons * -->
+    <div class="form-section form-section-buttons">
+      <button mat-raised-button color="accent" (click)="abort()">
+        {{ strings._Abort_ }}
+      </button>
+      <button mat-raised-button color="accent" (click)="analyze()">
+        {{ strings._Analyze_ }}
+      </button>
+      <button mat-raised-button color="primary" (click)="download()">
+        {{ strings._Download_ }}
+      </button>
+    </div>
+
+  </form>
 </div>

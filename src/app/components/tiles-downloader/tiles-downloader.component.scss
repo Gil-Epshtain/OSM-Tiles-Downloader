@@ -1,28 +1,40 @@
 @import './../../style/colors.scss';
 
 .tiles-downloader-container
-{  
-  .downloader-section
+{
+  .form-section
   {
-    position: absolute;
-    display: inline-block;
-    width: calc(50% - 45px);
-    top: 120px;
-    bottom: 10px;
-    padding: 5px 5px;
+    position: relative;
     border: 3px solid $color-text;
-    vertical-align: top;
-    overflow-y: auto;
-    font-size: 18px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+  }  
+  .form-section-server
+  {
+    height: 202px;
+  }
+  .form-section-buttons
+  {
+    text-align: right;
+    margin-bottom: 0;
+  }
+  
+  .form-field
+  {
+    width: 300px;
+    margin-bottom: -1em;
   }
 
-  .section-left
+  .table
   {
-    left: 25px;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 5px 0;
   }
-
-  .section-right
+  .table-cell
   {
-    right: 25px;
+    border: 3px solid $color-text;
+    text-align: center;
+    padding-top: 5px;
   }
 }

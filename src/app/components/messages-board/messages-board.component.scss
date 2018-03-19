@@ -1,0 +1,7 @@
+@import './../../style/colors.scss';
+
+.messages-board-container
+{
+  display: flex;
+  flex-direction: column-reverse;
+}

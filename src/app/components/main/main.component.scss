@@ -17,11 +17,31 @@
 
   .body-container
   {
+    width: 100%;
     white-space: nowrap;
 
-    .tiles-downloader
+    .page-section
     {
-      width: 100%;
+      position: absolute;
+      display: inline-block;
+      width: calc(50% - 45px);
+      top: 120px;
+      bottom: 10px;
+      padding: 5px 5px;
+      border: 3px solid $color-text;
+      vertical-align: top;
+      overflow-y: auto;
+      font-size: 18px;
+    }  
+
+    .section-left
+    {
+      left: 25px;
+    }
+  
+    .section-right
+    {
+      right: 25px;
     }
   }
 }

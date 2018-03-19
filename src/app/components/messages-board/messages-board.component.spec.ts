@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TilesDownloaderLogComponent } from './tiles-downloader-log.component';
+import { MessagesBoardComponent } from './messages-board.component';
 
-describe('TilesDownloaderLogComponent', () => {
-  let component: TilesDownloaderLogComponent;
-  let fixture: ComponentFixture<TilesDownloaderLogComponent>;
+describe('MessagesBoardComponent', () => {
+  let component: MessagesBoardComponent;
+  let fixture: ComponentFixture<MessagesBoardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TilesDownloaderLogComponent ]
+      declarations: [ MessagesBoardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TilesDownloaderLogComponent);
+    fixture = TestBed.createComponent(MessagesBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
