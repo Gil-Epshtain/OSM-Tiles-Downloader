@@ -25,7 +25,7 @@ $ npm install
 
 Run dev server
 ```sh
-$ ng serve
+$ npm start
 ```
 
 Open your web browser and navigate to `http://localhost:4200/`
