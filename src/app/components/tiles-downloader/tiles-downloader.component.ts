@@ -254,6 +254,14 @@ export class TilesDownloaderComponent implements OnInit
     return isInputValid;
   }
 
+  public onKeyDown(event: any): void
+  {
+    if (event.keyCode === 13) // Enter
+    {
+      this.download();
+    }    
+  }
+
   public analyze(): void
   {
     console.log("Tiles-Downloader-Config.component - analyze");

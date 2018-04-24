@@ -1,7 +1,8 @@
 <!-- *** Messages-Board *** -->
 <div #msgBoard class="messages-board-container">
   <div *ngFor='let message of logService.messages'
-    [ngStyle]="{ 'color': _getMessageColor(message.logLevel) }">
+        class="message"
+       [ngStyle]="{ 'color': _getMessageColor(message.logLevel) }">
     {{ message.text }}
   </div>
 </div>

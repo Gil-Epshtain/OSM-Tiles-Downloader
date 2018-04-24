@@ -226,7 +226,7 @@ export class TilesDownloaderService
       this._isAbortDownload = false;
 
       let index = 0;
-      let errorCount = 0;
+      let errors: string[] = [];
       let startTime = new Date().getTime();
 
       for (let x = tilesData.xStart; x <= tilesData.xEnd; x++)
@@ -235,7 +235,8 @@ export class TilesDownloaderService
         {
           if (this._isAbortDownload)
           {
-            this._logService.addMessage(`${ this._stringsService.strings._DownloadAbortedByUser_ } [${ index } ${ this._stringsService.strings._OutOf_ } ${ tilesData.tilesCount }, ${ errorCount} ${ this._stringsService.strings._Errors_ }]`, eLogLevel.warning);
+            this._writeDownloadEndedMessage(this._stringsService.strings._DownloadAbortedByUser_, index, tilesData.tilesCount, startTime, errors);
+            
             return;
           }
           else
@@ -252,22 +253,43 @@ export class TilesDownloaderService
             catch(e)
             {
               this._logService.addMessage(e, eLogLevel.error);
-              errorCount++;
+              errors.push(e);
             }
           }
         }
       }
 
-      let tilesDownloaded =  tilesData.tilesCount - errorCount;
-      let downloadSuccessRate = parseFloat((tilesDownloaded * 100 / tilesData.tilesCount).toFixed(2));
-      let duration = this._timeToString((new Date().getTime()) - startTime);
-
-      this._logService.addMessage(`${ this._stringsService.strings._DownloadFlowEnded_ } - ${ downloadSuccessRate }% ${ this._stringsService.strings._SuccessRate_ } [${ tilesDownloaded } ${ this._stringsService.strings._OutOf_ } ${ tilesData.tilesCount } ${ this._stringsService.strings._TilesDownloadedIn_ } ${ duration }].`, 
-                                  (downloadSuccessRate == 100) ? eLogLevel.success : eLogLevel.warning);
+      this._writeDownloadEndedMessage(this._stringsService.strings._DownloadCompleted_, tilesData.tilesCount - errors.length, tilesData.tilesCount, startTime, errors);
     } 
     else
     {      
       this._logService.addMessage(this._stringsService.strings._DownloadAbortedByUser_)
+    }
+  }
+
+  private _writeDownloadEndedMessage(
+    downloadStatus: string,
+    downloadCount: number, 
+    tilesCount: number,
+    startTime: number, 
+    errors: string[])
+  {
+    this._logService.addMessage(`------------------------ ${ this._stringsService.strings._DownloadEnded_ } ------------------------`);
+
+    let successRate = parseFloat((downloadCount * 100 / tilesCount).toFixed(2));
+    let duration = this._timeToString((new Date().getTime()) - startTime);
+    
+    let message = `${ downloadStatus } [${ downloadCount } ${ this._stringsService.strings._OutOf_ } ${ tilesCount } - ${ successRate }% ${ this._stringsService.strings._Success_ }; ${ errors.length } ${ this._stringsService.strings._Errors_ }; in ${ duration }]`;
+
+    if (errors.length === 0)
+    {
+      this._logService.addMessage(message, eLogLevel.success);
+    }
+    else
+    {
+      errors.forEach(error => this._logService.addMessage(error, eLogLevel.error));
+      this._logService.addMessage(this._stringsService.strings._TilesFailedToDownload_, eLogLevel.warning);
+      this._logService.addMessage(message, eLogLevel.warning);
     }
   }
 
