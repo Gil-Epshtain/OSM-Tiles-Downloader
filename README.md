@@ -1,27 +1,39 @@
-# OsmTilesDownloader
+# OSM-Tiles-Downloader
+Download Open-Street-Map Tiles from the OSM server
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
+### Open Street Map Tiles usage policy
+Before using this application please read the [OSM Tile usage policy][lnk1]. 
+Downloading large amount of tiles is **forbidden** without prior consultation with a [OSM System Administrator][lnk2].
 
-## Development server
+**Use this application at your own risk. I *Gil Epshtain*, will not be responsible to any damage to your system. And I will not be reliable if you violate the OSM tile policy or any other Tile usage policy!**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![preview](https://raw.githubusercontent.com/Gil-Epshtain/OSM-Tiles-Downloader/master/snapshot.png)
 
-## Code scaffolding
+### Run application
+You only want to use the application, and you don't care about debugging the application.
+Then you should only download the `dist` folder to your machine, and open the `dist/index.html` in your browser.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Development
+You want to be part of the development. You want to debug and understand how things work under the hood, then you will need to follow these steps.
 
-## Build
+OSM-Tiles-Downloader requires [Node.js](https://nodejs.org/) to run.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+ Download and install the dependencies.
+```sh
+$ npm install
+```
 
-## Running unit tests
+Run dev server
+```sh
+$ npm start
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Open your web browser and navigate to `http://localhost:4200/`
 
-## Running end-to-end tests
+### License
+MIT
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+**Free Software, Hell Yeah!**
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  [lnk1]: <https://wiki.openstreetmap.org/wiki/Tile_usage_policy>
+  [lnk2]: <https://wiki.openstreetmap.org/wiki/System_Administrators>
