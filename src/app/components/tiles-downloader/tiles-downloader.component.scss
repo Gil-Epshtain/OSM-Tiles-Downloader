@@ -8,7 +8,7 @@
     border: 3px solid $color-text;
     margin-bottom: 5px;
     padding: 5px 10px;
-  }  
+  }
   .form-section-server
   {
     height: 202px;
@@ -17,8 +17,13 @@
   {
     text-align: right;
     margin-bottom: 0;
+
+    .button
+    {
+      margin: 0 4px;
+    }
   }
-  
+
   .form-field
   {
     width: 150px;

@@ -13,7 +13,7 @@ export class StringsService
   private _string: any;
   private _language: any;
 
-  public constructor() 
+  public constructor()
   {
     console.log("Strings.service - ctor");
 
@@ -22,9 +22,9 @@ export class StringsService
 
   private _loadStrings(): void
   {
-    this._string = 
+    this._string =
     {
-      "en-US": enUS
+      "en-US": enUS.default
     };
 
     this._language = null;

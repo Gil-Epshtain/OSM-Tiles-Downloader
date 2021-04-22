@@ -11,7 +11,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      
+
       <!-- Map Preview -->
       <app-map-preview [mapServer]="selectedServer.url"></app-map-preview>
     </div>
@@ -19,12 +19,12 @@
     <!-- Zoom Level -->
     <div class="form-section">
       <mat-form-field class="form-field">
-        <input type="number" 
-               matInput 
-               name="zoomLevel" 
-               placeholder="{{ strings._ZoomLevel_ }}" 
-               min="_MIN_ZOOM" 
-               max="_MAX_ZOOM" 
+        <input type="number"
+               matInput
+               name="zoomLevel"
+               placeholder="{{ strings._ZoomLevel_ }}"
+               min="_MIN_ZOOM"
+               max="_MAX_ZOOM"
                [(ngModel)]="zoomLevel"/>
       </mat-form-field>
     </div>
@@ -41,13 +41,13 @@
         <tr>     
           <td colspan="2" class="table-cell">
             <mat-form-field class="form-field">
-              <input type="number" 
+              <input type="number"
                      matInput
-                     class="center" 
-                     name="north" 
+                     class="center"
+                     name="north"
                      placeholder="{{ strings._North_ }}" 
-                     min="_MIN_LAT" 
-                     max="_MAX_LAT" 
+                     min="_MIN_LAT"
+                     max="_MAX_LAT"
                      [(ngModel)]="north"/>
             </mat-form-field>
           </td>
@@ -56,40 +56,40 @@
         <tr>
           <td class="table-cell">
             <mat-form-field class="form-field">
-              <input type="number" 
+              <input type="number"
                      matInput
-                     class="center" 
-                     name="west" 
-                     placeholder="{{ strings._West_ }}" 
-                     min="_MIN_LNG" 
-                     max="_MAX_LNG" 
+                     class="center"
+                     name="west"
+                     placeholder="{{ strings._West_ }}"
+                     min="_MIN_LNG"
+                     max="_MAX_LNG"
                      [(ngModel)]="west"/>
             </mat-form-field>
           </td>
           <td class="table-cell">
             <mat-form-field class="form-field">
-              <input type="number" 
+              <input type="number"
                      matInput
-                     class="center" 
-                     name="east" 
-                     placeholder="{{ strings._East_ }}" 
-                     min="_MIN_LNG" 
-                     max="_MAX_LNG" 
+                     class="center"
+                     name="east"
+                     placeholder="{{ strings._East_ }}"
+                     min="_MIN_LNG"
+                     max="_MAX_LNG"
                      [(ngModel)]="east"/>
             </mat-form-field>
           </td>
         </tr>
         <!-- South -->
-        <tr>     
+        <tr>
           <td colspan="2" class="table-cell">
             <mat-form-field class="form-field">
-              <input type="number" 
+              <input type="number"
                      matInput
                      class="center"
-                     name="south" 
-                     placeholder="{{ strings._South_ }}" 
-                     min="_MIN_LAT" 
-                     max="_MAX_LAT" 
+                     name="south"
+                     placeholder="{{ strings._South_ }}"
+                     min="_MIN_LAT"
+                     max="_MAX_LAT"
                      [(ngModel)]="south"/>
             </mat-form-field>
           </td>
@@ -111,15 +111,15 @@
       </mat-radio-group>
       <table class="table">
         <!-- Y Start -->
-        <tr>     
+        <tr>
           <td colspan="2" class="table-cell">
             <mat-form-field class="form-field">
-              <input type="number" 
+              <input type="number"
                      matInput
-                     class="center" 
-                     name="yStart" 
-                     placeholder="{{ strings._YStart_ }}" 
-                     min="0" 
+                     class="center"
+                     name="yStart"
+                     placeholder="{{ strings._YStart_ }}"
+                     min="0"
                      [(ngModel)]="yStart"/>
             </mat-form-field>
           </td>
@@ -128,23 +128,23 @@
         <tr>
           <td class="table-cell">
             <mat-form-field class="form-field">
-              <input type="number" 
-                     matInput 
+              <input type="number"
+                     matInput
                      class="center"
-                     name="xStart" 
-                     placeholder="{{ strings._XStart_ }}" 
-                     min="0" 
+                     name="xStart"
+                     placeholder="{{ strings._XStart_ }}"
+                     min="0"
                      [(ngModel)]="xStart"/>
             </mat-form-field>
           </td>
           <td class="table-cell">
             <mat-form-field class="form-field">
-              <input type="number" 
-                     matInput 
+              <input type="number"
+                     matInput
                      class="center"
-                     name="xEnd" 
-                     placeholder="{{ strings._XEnd_ }}" 
-                     min="0" 
+                     name="xEnd"
+                     placeholder="{{ strings._XEnd_ }}"
+                     min="0"
                      [(ngModel)]="xEnd"/>
             </mat-form-field>
           </td>
@@ -153,12 +153,12 @@
         <tr>     
           <td colspan="2" class="table-cell">
             <mat-form-field class="form-field">
-              <input type="number" 
-                     matInput 
+              <input type="number"
+                     matInput
                      class="center"
                      name="yEnd"
-                     placeholder="{{ strings._YEnd_ }}" 
-                     min="0" 
+                     placeholder="{{ strings._YEnd_ }}"
+                     min="0"
                      [(ngModel)]="yEnd"/>
             </mat-form-field>
           </td>
@@ -168,13 +168,13 @@
 
     <!-- * Buttons * -->
     <div class="form-section form-section-buttons">
-      <button mat-raised-button color="accent" (click)="abort()">
+      <button mat-raised-button color="accent" (click)="abort()" class="button">
         {{ strings._Abort_ }}
       </button>
-      <button mat-raised-button color="accent" (click)="analyze()">
+      <button mat-raised-button color="accent" (click)="analyze()" class="button">
         {{ strings._Analyze_ }}
       </button>
-      <button mat-raised-button color="primary" (click)="download()">
+      <button mat-raised-button color="primary" (click)="download()" class="button">
         {{ strings._Download_ }}
       </button>
     </div>

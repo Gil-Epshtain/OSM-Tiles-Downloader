@@ -1,47 +1,42 @@
 // *** Angular ***
-import { BrowserModule }                from '@angular/platform-browser';
-import { BrowserAnimationsModule }      from '@angular/platform-browser/animations';
-import { NgModule }                     from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
-import { HttpClientModule }             from '@angular/common/http'; 
+import { BrowserModule }                    from '@angular/platform-browser';
+import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
+import { NgModule }                         from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule }                 from '@angular/common/http';
 
 // *** Material Design ***
-import 'hammerjs'; // Hummer JS (required by Material for Animations)
-import { 
-  MatFormFieldModule,
-  MatInputModule,
-  MatRadioModule,
-  MatSelectModule,
-  MatButtonModule,
-  MatTooltipModule
-} from '@angular/material';
+import { MatFormFieldModule }               from '@angular/material/form-field';
+import { MatInputModule }                   from '@angular/material/input';
+import { MatRadioModule }                   from '@angular/material/radio';
+import { MatSelectModule }                  from '@angular/material/select';
+import { MatButtonModule }                  from '@angular/material/button';
+import { MatTooltipModule }                 from '@angular/material/tooltip';
 
 // *** Application ***
-// Modules 
-//import { AppRoutingModule }               from './app-routing.module';
 
 // Services
-import { StringsService }                 from './services/strings/strings.service';
-import { LogService }                     from './services/log/log.service';
-import { FileDownloaderService }          from './services/file-downloader/file-downloader.service';
-import { TilesDownloaderService }         from './services/tiles-downloader/tiles-downloader.service';
+import { StringsService }                   from './services/strings/strings.service';
+import { LogService }                       from './services/log/log.service';
+import { FileDownloaderService }            from './services/file-downloader/file-downloader.service';
+import { TilesDownloaderService }           from './services/tiles-downloader/tiles-downloader.service';
 
 // Component
-import { AppComponent }                   from './components/app-component/app.component';
-import { MainComponent }                  from './components/main/main.component';
-import { HeaderComponent }                from './components/header/header.component';
+import { AppComponent }                     from './components/app-component/app.component';
+import { MainComponent }                    from './components/main/main.component';
+import { HeaderComponent }                  from './components/header/header.component';
 
-import { TilesDownloaderComponent }       from './components/tiles-downloader/tiles-downloader.component';
-import { MessagesBoardComponent }         from './components/messages-board/messages-board.component';
-import { MapPreviewComponent }            from './components/map-preview/map-preview.component';
+import { TilesDownloaderComponent }         from './components/tiles-downloader/tiles-downloader.component';
+import { MessagesBoardComponent }           from './components/messages-board/messages-board.component';
+import { MapPreviewComponent }              from './components/map-preview/map-preview.component';
 
 @NgModule({
   // Modules
-  imports: 
+  imports:
   [
     // Angular
     BrowserModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     FormsModule, // NgModel lives here
     ReactiveFormsModule,
     HttpClientModule,
@@ -52,13 +47,10 @@ import { MapPreviewComponent }            from './components/map-preview/map-pre
     MatRadioModule,
     MatSelectModule,
     MatButtonModule,
-    MatTooltipModule,
-
-    // Application
-    //AppRoutingModule,
+    MatTooltipModule
   ],
   // Services
-  providers: 
+  providers:
   [
     StringsService,
     LogService,
@@ -66,10 +58,10 @@ import { MapPreviewComponent }            from './components/map-preview/map-pre
     TilesDownloaderService
   ],
   // Components
-  declarations: 
+  declarations:
   [
     // Components
-    AppComponent, 
+    AppComponent,
     MainComponent,
     HeaderComponent,
     TilesDownloaderComponent,
@@ -78,14 +70,14 @@ import { MapPreviewComponent }            from './components/map-preview/map-pre
     // fin
   ],
   // Dynamically loaded components
-  entryComponents: [ ],
+  entryComponents: [],
   // Run (Kickoff application)
-  bootstrap: 
+  bootstrap:
   [
     AppComponent
   ]
 })
-export class AppModule 
+export class AppModule
 { 
   public constructor()
   {
