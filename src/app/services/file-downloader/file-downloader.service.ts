@@ -20,7 +20,7 @@ export class FileDownloaderService
       XHR.onreadystatechange = function()
       {
         if (XHR.readyState == 4)
-        { 
+        {
           if (XHR.status == 200)
           {
             // Save downloaded file to disk
@@ -45,7 +45,7 @@ export class FileDownloaderService
           }
         }
       }
-  
+
       XHR.responseType = 'blob';
       XHR.open('GET', fileUrl, true);
       XHR.send();

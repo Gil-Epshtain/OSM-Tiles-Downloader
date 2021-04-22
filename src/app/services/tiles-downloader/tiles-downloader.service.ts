@@ -168,6 +168,12 @@ export const serversList =
     url: "https://cartocdn_a.global.ssl.fastly.net/base-midnight",
     urlRegEx: "https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png"
   },
+  // Modest Maps
+  {
+    name: "Modest Maps",
+    url: "http://tiles.cdnst.net/base/",
+    urlRegEx: "http://tiles.cdnst.net/base/{z}/{x}/{y}.png"
+  }
 ];
 
 @Injectable()
@@ -269,9 +275,9 @@ export class TilesDownloaderService
 
   private _writeDownloadEndedMessage(
     downloadStatus: string,
-    downloadCount: number, 
+    downloadCount: number,
     tilesCount: number,
-    startTime: number, 
+    startTime: number,
     errors: string[])
   {
     this._logService.addMessage(`------------------------ ${ this._stringsService.strings._DownloadEnded_ } ------------------------`);
@@ -305,7 +311,7 @@ export class TilesDownloaderService
 
     let sec: number = time % 60;
     let secStr: string = (sec < 10) ? '0' + sec : sec.toString();
-    time = Math.floor(time / 60);    
+    time = Math.floor(time / 60);
 
     let min: number = time % 60;
     let minStr = (min < 10) ? '0' + min : min.toString();
@@ -319,7 +325,7 @@ export class TilesDownloaderService
   // Convert (Lat, Lng) To Tile (X, Y) - Read more at https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Zoom_levels
   private _lng2tile(lng: number, zoom: number): number
   { 
-    return (Math.floor((lng + 180) / 360 * Math.pow(2, zoom))); 
+    return (Math.floor((lng + 180) / 360 * Math.pow(2, zoom)));
   }
 
   private _lat2tile(lat: number, zoom: number): number
