@@ -171,7 +171,7 @@ export const serversList =
   // Modest Maps
   {
     name: "Modest Maps",
-    url: "http://tiles.cdnst.net/base/",
+    url: "http://tiles.cdnst.net/base",
     urlRegEx: "http://tiles.cdnst.net/base/{z}/{x}/{y}.png"
   }
 ];
